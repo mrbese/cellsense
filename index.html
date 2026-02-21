@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CellSense — Home Battery ROI Calculator</title>
+  <meta name="description" content="Calculate the payback period for home battery systems like Tesla Powerwall 3, Enphase IQ, Pila Mesh, and Base Power. Compare TOU arbitrage savings, VPP earnings, and backup value.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='10' y='2' width='12' height='28' rx='3' fill='%2300d4aa'/><rect x='13' y='0' width='6' height='3' rx='1' fill='%2300d4aa'/><rect x='12' y='14' width='8' height='2' rx='1' fill='%23060910'/><polygon points='16,8 13,15 15,15 14,22 19,13 17,13' fill='%23060910'/></svg>">
+  
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+  <!-- ═══ HERO ═══ -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero__eyebrow">
+        <span>⚡</span> Battery ROI Calculator
+      </div>
+      <h1 class="hero__title">
+        Cell<span>Sense</span>
+      </h1>
+      <p class="hero__subtitle">
+        Calculate your payback period for home batteries. Real utility rates, real math, real savings.
+      </p>
+    </div>
+  </header>
+
+  <!-- ═══ WIZARD FORM ═══ -->
+  <main class="container container--narrow">
+    
+    <!-- Progress Indicator -->
+    <div class="wizard">
+      <div class="wizard__progress">
+        <div class="wizard__step-indicator">
+          <div class="wizard__dot wizard__dot--active" id="dot-1">1</div>
+          <div class="wizard__step-label wizard__step-label--active">Utility</div>
+        </div>
+        <div class="wizard__connector" id="connector-1"></div>
+        <div class="wizard__step-indicator">
+          <div class="wizard__dot" id="dot-2">2</div>
+          <div class="wizard__step-label">Home</div>
+        </div>
+        <div class="wizard__connector" id="connector-2"></div>
+        <div class="wizard__step-indicator">
+          <div class="wizard__dot" id="dot-3">3</div>
+          <div class="wizard__step-label">Priorities</div>
+        </div>
+      </div>
+
+      <!-- ── Step 1: Your Utility ── -->
+      <div class="step step--active glass-card" id="step-1">
+        <div class="step__header">
+          <h2 class="step__title">Your Utility</h2>
+          <p class="step__description">Select your electric utility and current rate plan</p>
+        </div>
+
+        <div class="step__grid">
+          <div class="form-group">
+            <label class="form-label" for="utility-select">Utility Company</label>
+            <select class="form-select" id="utility-select" aria-label="Select your utility company">
+              <option value="">Select your utility...</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="rateplan-select">Rate Plan</label>
+            <select class="form-select" id="rateplan-select" aria-label="Select your rate plan">
+              <option value="">Select a rate plan...</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="step__grid" style="margin-top: var(--space-6);">
+          <div class="form-group">
+            <label class="form-label" for="monthly-bill">Avg Monthly Bill</label>
+            <div class="input-with-prefix">
+              <span class="input-with-prefix__symbol">$</span>
+              <input type="number" class="form-input" id="monthly-bill" placeholder="200" min="0" max="5000" step="10" value="200" aria-label="Average monthly electric bill">
+            </div>
+            <span class="form-hint">Before taxes and fees</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Solar Panels?</label>
+            <label class="toggle">
+              <input type="checkbox" class="toggle__input" id="solar-toggle">
+              <div class="toggle__track">
+                <div class="toggle__thumb"></div>
+              </div>
+              <span class="toggle__label">I have rooftop solar</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- NEM 3.0 Callout -->
+        <div class="nem3-callout" id="nem3-callout">
+          <div class="nem3-callout__title">☀️ NEM 3.0 Detected</div>
+          <div class="nem3-callout__text">
+            Your utility uses NEM 3.0 (Net Billing Tariff). Solar export rates average ~$0.05-0.08/kWh midday — 
+            much lower than retail. A battery lets you store solar and sell at peak rates instead, 
+            dramatically improving your ROI. We'll factor this into the calculations.
+          </div>
+        </div>
+
+        <div class="step__actions">
+          <div></div>
+          <button class="btn btn--primary btn--large" data-action="next">
+            Next: Your Home →
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Step 2: Your Home ── -->
+      <div class="step glass-card" id="step-2">
+        <div class="step__header">
+          <h2 class="step__title">Your Home</h2>
+          <p class="step__description">Help us estimate your energy profile</p>
+        </div>
+
+        <div class="step__grid">
+          <div class="form-group">
+            <label class="form-label" for="home-size">Home Size</label>
+            <div class="input-with-prefix">
+              <input type="number" class="form-input" id="home-size" placeholder="2000" min="100" max="20000" step="100" value="2000" style="padding-left: var(--space-4);" aria-label="Home size in square feet">
+            </div>
+            <span class="form-hint">Square feet</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="occupants">Occupants</label>
+            <select class="form-select" id="occupants" aria-label="Number of occupants">
+              <option value="1">1 person</option>
+              <option value="2">2 people</option>
+              <option value="3" selected>3 people</option>
+              <option value="4">4 people</option>
+              <option value="5">5+ people</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: var(--space-6);">
+          <label class="form-label">Additional Loads</label>
+          <div class="checkbox-row">
+            <div class="checkbox-item">
+              <input type="checkbox" id="has-ev">
+              <label for="has-ev">🚗 Electric Vehicle</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="has-pool">
+              <label for="has-pool">🏊 Pool / Spa</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="step__grid" style="margin-top: var(--space-6);">
+          <div class="form-group">
+            <label class="form-label" for="hvac-type">HVAC Type</label>
+            <select class="form-select" id="hvac-type" aria-label="HVAC type">
+              <option value="gas">Gas Furnace + AC</option>
+              <option value="heatpump">Electric Heat Pump</option>
+              <option value="electric">All Electric</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="daily-kwh">Est. Daily Usage</label>
+            <div class="input-with-prefix">
+              <input type="number" class="form-input" id="daily-kwh" placeholder="22" min="1" max="500" step="1" style="padding-left: var(--space-4);" aria-label="Estimated daily kWh usage">
+            </div>
+            <span class="form-hint">kWh/day — auto-calculated from your bill</span>
+          </div>
+        </div>
+
+        <div class="step__actions">
+          <button class="btn btn--secondary btn--large" data-action="back">
+            ← Back
+          </button>
+          <button class="btn btn--primary btn--large" data-action="next">
+            Next: Priorities →
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Step 3: Your Priorities ── -->
+      <div class="step glass-card" id="step-3">
+        <div class="step__header">
+          <h2 class="step__title">Your Priorities</h2>
+          <p class="step__description">Fine-tune what matters most to you</p>
+        </div>
+
+        <div class="form-group">
+          <div class="slider-group">
+            <div class="slider-header">
+              <label class="form-label" for="backup-slider">Backup Power Value</label>
+              <span class="slider-value" id="backup-value-display">$200/yr</span>
+            </div>
+            <input type="range" class="range-slider" id="backup-slider" min="0" max="2000" step="50" value="200" aria-label="How much is backup power worth to you per year">
+            <div class="slider-range-labels">
+              <span>$0 – Not important</span>
+              <span>$2,000 – Critical</span>
+            </div>
+            <span class="form-hint" style="margin-top: var(--space-2);">
+              What's it worth avoiding power outages? Consider food spoilage ($50-200), 
+              lost remote work ($100-500/day), medical equipment, and peace of mind.
+            </span>
+          </div>
+        </div>
+
+        <div class="step__grid" style="margin-top: var(--space-8);">
+          <div class="form-group">
+            <label class="form-label">VPP Programs</label>
+            <label class="toggle">
+              <input type="checkbox" class="toggle__input" id="vpp-toggle" checked>
+              <div class="toggle__track">
+                <div class="toggle__thumb"></div>
+              </div>
+              <span class="toggle__label">Include VPP earnings in ROI</span>
+            </label>
+            <span class="form-hint">Virtual Power Plant programs pay you to share stored energy during grid peaks</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Federal Tax Credit</label>
+            <label class="toggle">
+              <input type="checkbox" class="toggle__input" id="itc-toggle" checked>
+              <div class="toggle__track">
+                <div class="toggle__thumb"></div>
+              </div>
+              <span class="toggle__label">Apply 30% ITC (requires solar)</span>
+            </label>
+            <span class="form-hint">Investment Tax Credit — 30% off installed cost when paired with solar panels</span>
+          </div>
+        </div>
+
+        <div class="step__actions">
+          <button class="btn btn--secondary btn--large" data-action="back">
+            ← Back
+          </button>
+          <button class="btn btn--primary btn--large" id="calculate-btn">
+            ⚡ Calculate My ROI
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ═══ RESULTS DASHBOARD ═══ -->
+  <section class="results container" id="results-section">
+    <div class="results__header">
+      <h2 class="results__title">Your Battery ROI Comparison</h2>
+      <p class="results__subtitle">Side-by-side analysis of 4 home battery systems based on your inputs</p>
+    </div>
+
+    <!-- Comparison Cards -->
+    <div class="comparison-grid stagger-children" id="comparison-grid">
+      <!-- Cards rendered dynamically by results.js -->
+    </div>
+
+    <!-- Charts -->
+    <div class="charts-section">
+      <div class="chart-container">
+        <div class="chart-container__title">Payback Timeline</div>
+        <canvas id="payback-chart"></canvas>
+      </div>
+      <div class="chart-container">
+        <div class="chart-container__title">Annual Savings Breakdown</div>
+        <canvas id="savings-donut"></canvas>
+      </div>
+      <div class="chart-container chart-container--full">
+        <div class="chart-container__title">10-Year Cumulative Net Benefit</div>
+        <canvas id="cumulative-chart"></canvas>
+        <div class="chart-legend" id="chart-legend">
+          <div class="chart-legend__item">
+            <div class="chart-legend__swatch" style="background: #e82127"></div>
+            <span>Tesla Powerwall 3</span>
+          </div>
+          <div class="chart-legend__item">
+            <div class="chart-legend__swatch" style="background: #ff6600"></div>
+            <span>Enphase IQ 5P</span>
+          </div>
+          <div class="chart-legend__item">
+            <div class="chart-legend__swatch" style="background: #00c853"></div>
+            <span>Pila Mesh</span>
+          </div>
+          <div class="chart-legend__item">
+            <div class="chart-legend__swatch" style="background: #6366f1"></div>
+            <span>Base Power</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__text">
+        CellSense provides estimates based on published utility rate data (Q1 2026). 
+        Actual savings depend on usage patterns, rate changes, and system performance. 
+        Not financial advice. Battery prices reflect national averages including installation.
+      </p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
