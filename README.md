@@ -47,4 +47,4 @@ Rate data is accurate as of Q1 2026 and sourced from published utility tariffs. 
 
 ## License
 
-MIT
+This project is licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE.md). It is free for noncommercial use; commercial use requires the author's permission.
