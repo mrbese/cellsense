@@ -1,0 +1,430 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2157B93D590059F6D87166A2 /* utilities.json in Resources */ = {isa = PBXBuildFile; fileRef = 03CE3FB4BC869DB73E365640 /* utilities.json */; };
+		3A05297AB03EF33741EB5DD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90595B17C92A8BAAEECDD7AD /* Assets.xcassets */; };
+		49F37596CF5E4D9CC7ED93C3 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808EB32A0B4F9925DE14B75F /* DataManager.swift */; };
+		4E34DF3AB8ABBC4595A17DEC /* HomeStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39F3AC8B9A706105D1277D /* HomeStepView.swift */; };
+		5AA7177FD017CB32E2338327 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C5C1CAE05F900A237B9F5C /* Utility.swift */; };
+		63063605CB52964FF25660CB /* BatteryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3D801063C09EB7AFB5C257 /* BatteryCardView.swift */; };
+		6C53CCD4BCC80908C2AE29DF /* UtilityStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D207F5DA21C4D37F8DE0F37 /* UtilityStepView.swift */; };
+		6F3EBDC13C7F0EAA6143CA9A /* MathBreakdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644CFFEFFFC66BF5645A9031 /* MathBreakdownView.swift */; };
+		7A2E2559310D892D43FF2027 /* vppPrograms.json in Resources */ = {isa = PBXBuildFile; fileRef = E6C581D2065788430B362DEF /* vppPrograms.json */; };
+		80522A737310580E2C04DF2A /* RatePlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C33E8450D457E2F23809DA /* RatePlan.swift */; };
+		8995B0056E261761F8616868 /* ratePlans.json in Resources */ = {isa = PBXBuildFile; fileRef = 71FCFC00082D73BE44E6A968 /* ratePlans.json */; };
+		8FB5E7289D9A5DA8D4FCCA7E /* PrioritiesStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DE4C9A72BA082AD7A69532 /* PrioritiesStepView.swift */; };
+		929406BDE9759B3AE5B721B4 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23BEF025D7D8A2106EE7676 /* Battery.swift */; };
+		94A6911112AD8B5AD4922DE2 /* VPPProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56073ACB1583CFC9433FFD /* VPPProgram.swift */; };
+		97C39420E80D3489D05DE139 /* VPPCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14A8C75C5B6E0484AF45787 /* VPPCalculator.swift */; };
+		9ED865C0711CAEF50A4FDBDA /* CellSenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F0C3705C32E1E3E258F9C3 /* CellSenseApp.swift */; };
+		AE1424E3D5A0C1E0B9B34EC8 /* batteries.json in Resources */ = {isa = PBXBuildFile; fileRef = B47591013FFFA1623955D637 /* batteries.json */; };
+		AE5E745F22FEE18E706DEF9B /* ResultsDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5531DE930217F70E21B20B5D /* ResultsDashboardView.swift */; };
+		BBA98468C6488D5683C31235 /* ArbitrageCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E61E442635D0C0B3E2A2C1 /* ArbitrageCalculator.swift */; };
+		D2CA133C7F4BE77502D78668 /* CalculatorWizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC2F5401C00105F988DB3F7 /* CalculatorWizardView.swift */; };
+		E92C6715D1A8F31CF11EB8EF /* CalculationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF2F378868D24693D198268 /* CalculationModel.swift */; };
+		EE2882CCEFBE1E4B05984265 /* PaybackCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A397A32968921785925DF4F /* PaybackCalculator.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		03CE3FB4BC869DB73E365640 /* utilities.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = utilities.json; sourceTree = "<group>"; };
+		05F0C3705C32E1E3E258F9C3 /* CellSenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSenseApp.swift; sourceTree = "<group>"; };
+		11DE4C9A72BA082AD7A69532 /* PrioritiesStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritiesStepView.swift; sourceTree = "<group>"; };
+		1A397A32968921785925DF4F /* PaybackCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaybackCalculator.swift; sourceTree = "<group>"; };
+		1D207F5DA21C4D37F8DE0F37 /* UtilityStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityStepView.swift; sourceTree = "<group>"; };
+		2C56073ACB1583CFC9433FFD /* VPPProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPPProgram.swift; sourceTree = "<group>"; };
+		31C5C1CAE05F900A237B9F5C /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		43C33E8450D457E2F23809DA /* RatePlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatePlan.swift; sourceTree = "<group>"; };
+		4A59A882EF9D3F2471342762 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		53E61E442635D0C0B3E2A2C1 /* ArbitrageCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArbitrageCalculator.swift; sourceTree = "<group>"; };
+		5531DE930217F70E21B20B5D /* ResultsDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsDashboardView.swift; sourceTree = "<group>"; };
+		5E3D801063C09EB7AFB5C257 /* BatteryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryCardView.swift; sourceTree = "<group>"; };
+		644CFFEFFFC66BF5645A9031 /* MathBreakdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathBreakdownView.swift; sourceTree = "<group>"; };
+		684A5A333DDC099ACC5CC858 /* CellSense.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CellSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		71FCFC00082D73BE44E6A968 /* ratePlans.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ratePlans.json; sourceTree = "<group>"; };
+		808EB32A0B4F9925DE14B75F /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		90595B17C92A8BAAEECDD7AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A23BEF025D7D8A2106EE7676 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
+		AEF2F378868D24693D198268 /* CalculationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationModel.swift; sourceTree = "<group>"; };
+		B47591013FFFA1623955D637 /* batteries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = batteries.json; sourceTree = "<group>"; };
+		BA39F3AC8B9A706105D1277D /* HomeStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStepView.swift; sourceTree = "<group>"; };
+		D14A8C75C5B6E0484AF45787 /* VPPCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPPCalculator.swift; sourceTree = "<group>"; };
+		E6C581D2065788430B362DEF /* vppPrograms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = vppPrograms.json; sourceTree = "<group>"; };
+		FDC2F5401C00105F988DB3F7 /* CalculatorWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorWizardView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2C524E6FC22B94593980E139 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B47591013FFFA1623955D637 /* batteries.json */,
+				71FCFC00082D73BE44E6A968 /* ratePlans.json */,
+				03CE3FB4BC869DB73E365640 /* utilities.json */,
+				E6C581D2065788430B362DEF /* vppPrograms.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		31DB95918F53DF06CE5C4241 /* Wizard */ = {
+			isa = PBXGroup;
+			children = (
+				BA39F3AC8B9A706105D1277D /* HomeStepView.swift */,
+				11DE4C9A72BA082AD7A69532 /* PrioritiesStepView.swift */,
+				1D207F5DA21C4D37F8DE0F37 /* UtilityStepView.swift */,
+			);
+			path = Wizard;
+			sourceTree = "<group>";
+		};
+		46F2AD012E7F387AA7CBB94D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				684A5A333DDC099ACC5CC858 /* CellSense.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		72EBB0413CF7304AC7557300 /* CellSense */ = {
+			isa = PBXGroup;
+			children = (
+				90595B17C92A8BAAEECDD7AD /* Assets.xcassets */,
+				05F0C3705C32E1E3E258F9C3 /* CellSenseApp.swift */,
+				4A59A882EF9D3F2471342762 /* Info.plist */,
+				88567EE8A252C1CD0BA4F3B1 /* Engine */,
+				A2DB55E96CF27939F4EE7D2D /* Models */,
+				2C524E6FC22B94593980E139 /* Resources */,
+				F92C8B43FAB03CC19CFF8237 /* Views */,
+			);
+			path = CellSense;
+			sourceTree = "<group>";
+		};
+		73A3480B7828340120B271F5 /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				5E3D801063C09EB7AFB5C257 /* BatteryCardView.swift */,
+				644CFFEFFFC66BF5645A9031 /* MathBreakdownView.swift */,
+				5531DE930217F70E21B20B5D /* ResultsDashboardView.swift */,
+			);
+			path = Results;
+			sourceTree = "<group>";
+		};
+		88567EE8A252C1CD0BA4F3B1 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				53E61E442635D0C0B3E2A2C1 /* ArbitrageCalculator.swift */,
+				1A397A32968921785925DF4F /* PaybackCalculator.swift */,
+				D14A8C75C5B6E0484AF45787 /* VPPCalculator.swift */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		A2DB55E96CF27939F4EE7D2D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A23BEF025D7D8A2106EE7676 /* Battery.swift */,
+				AEF2F378868D24693D198268 /* CalculationModel.swift */,
+				808EB32A0B4F9925DE14B75F /* DataManager.swift */,
+				43C33E8450D457E2F23809DA /* RatePlan.swift */,
+				31C5C1CAE05F900A237B9F5C /* Utility.swift */,
+				2C56073ACB1583CFC9433FFD /* VPPProgram.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F1BB1098E154F369F07EE410 = {
+			isa = PBXGroup;
+			children = (
+				72EBB0413CF7304AC7557300 /* CellSense */,
+				46F2AD012E7F387AA7CBB94D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F92C8B43FAB03CC19CFF8237 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FDC2F5401C00105F988DB3F7 /* CalculatorWizardView.swift */,
+				73A3480B7828340120B271F5 /* Results */,
+				31DB95918F53DF06CE5C4241 /* Wizard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		701222DE73A5C8571C6B6F6E /* CellSense */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDBD5CC196731F08C37C458D /* Build configuration list for PBXNativeTarget "CellSense" */;
+			buildPhases = (
+				CF9B25DA61CB5092D989C827 /* Sources */,
+				315D860AA8A549BB2908C9CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CellSense;
+			packageProductDependencies = (
+			);
+			productName = CellSense;
+			productReference = 684A5A333DDC099ACC5CC858 /* CellSense.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		656B063A1D664B0949FCECB8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					701222DE73A5C8571C6B6F6E = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = 82E4BA96C39D6AEB07C1D66A /* Build configuration list for PBXProject "CellSense" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = F1BB1098E154F369F07EE410;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 46F2AD012E7F387AA7CBB94D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				701222DE73A5C8571C6B6F6E /* CellSense */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		315D860AA8A549BB2908C9CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A05297AB03EF33741EB5DD3 /* Assets.xcassets in Resources */,
+				AE1424E3D5A0C1E0B9B34EC8 /* batteries.json in Resources */,
+				8995B0056E261761F8616868 /* ratePlans.json in Resources */,
+				2157B93D590059F6D87166A2 /* utilities.json in Resources */,
+				7A2E2559310D892D43FF2027 /* vppPrograms.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CF9B25DA61CB5092D989C827 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBA98468C6488D5683C31235 /* ArbitrageCalculator.swift in Sources */,
+				929406BDE9759B3AE5B721B4 /* Battery.swift in Sources */,
+				63063605CB52964FF25660CB /* BatteryCardView.swift in Sources */,
+				E92C6715D1A8F31CF11EB8EF /* CalculationModel.swift in Sources */,
+				D2CA133C7F4BE77502D78668 /* CalculatorWizardView.swift in Sources */,
+				9ED865C0711CAEF50A4FDBDA /* CellSenseApp.swift in Sources */,
+				49F37596CF5E4D9CC7ED93C3 /* DataManager.swift in Sources */,
+				4E34DF3AB8ABBC4595A17DEC /* HomeStepView.swift in Sources */,
+				6F3EBDC13C7F0EAA6143CA9A /* MathBreakdownView.swift in Sources */,
+				EE2882CCEFBE1E4B05984265 /* PaybackCalculator.swift in Sources */,
+				8FB5E7289D9A5DA8D4FCCA7E /* PrioritiesStepView.swift in Sources */,
+				80522A737310580E2C04DF2A /* RatePlan.swift in Sources */,
+				AE5E745F22FEE18E706DEF9B /* ResultsDashboardView.swift in Sources */,
+				5AA7177FD017CB32E2338327 /* Utility.swift in Sources */,
+				6C53CCD4BCC80908C2AE29DF /* UtilityStepView.swift in Sources */,
+				97C39420E80D3489D05DE139 /* VPPCalculator.swift in Sources */,
+				94A6911112AD8B5AD4922DE2 /* VPPProgram.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		094059D15C38CDB64112D64E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		30238723FC2A206CF7D2C6C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = CellSense/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mrbese.CellSense;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5706F0FDA71404422A998370 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = CellSense/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mrbese.CellSense;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		662C147F53C94D3B030B8ABD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		82E4BA96C39D6AEB07C1D66A /* Build configuration list for PBXProject "CellSense" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				094059D15C38CDB64112D64E /* Debug */,
+				662C147F53C94D3B030B8ABD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FDBD5CC196731F08C37C458D /* Build configuration list for PBXNativeTarget "CellSense" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5706F0FDA71404422A998370 /* Debug */,
+				30238723FC2A206CF7D2C6C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 656B063A1D664B0949FCECB8 /* Project object */;
+}

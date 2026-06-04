@@ -1,0 +1,15 @@
+name: CellSense
+options:
+  bundleIdPrefix: com.mrbese
+targets:
+  CellSense:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: CellSense
+    settings:
+      INFOPLIST_FILE: CellSense/Info.plist
+      PRODUCT_BUNDLE_IDENTIFIER: com.mrbese.CellSense
+      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+      DEVELOPMENT_TEAM: ""
