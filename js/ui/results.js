@@ -166,7 +166,7 @@ function renderMathBreakdown(result) {
 
   // VPP
   rows += mathSection('VPP Earnings');
-  rows += mathRow('Program', result.components.vpp.program.programName);
+  rows += mathRow('Program', result.components.vpp.program?.programName || 'Disabled');
   rows += mathRow('Range', `${formatCurrency(result.components.vpp.range.min)} – ${formatCurrency(result.components.vpp.range.max)}`);
   if (result.components.vpp.upfront > 0) {
     rows += mathRow('Upfront incentive', formatCurrency(result.components.vpp.upfront));

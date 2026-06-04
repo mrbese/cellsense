@@ -17,6 +17,12 @@ export function calculateVpp(utilityId, battery, options = {}) {
             upfrontIncentive: 0,
             program: null,
             totalOverPeriod: 0,
+            details: {
+                programName: 'Disabled',
+                programType: 'none',
+                notes: 'VPP participation disabled by user',
+                capacityScale: 0
+            }
         };
     }
 

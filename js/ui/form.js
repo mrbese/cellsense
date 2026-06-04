@@ -69,6 +69,9 @@ function setupRatePlanDropdown(state) {
     const select = document.getElementById('rateplan-select');
     if (!select) return;
     select.innerHTML = '<option value="">Select a rate plan...</option>';
+    select.addEventListener('change', () => {
+        state.ratePlanId = select.value;
+    });
 }
 
 function populateRatePlans(state) {
@@ -85,14 +88,12 @@ function populateRatePlans(state) {
         select.appendChild(opt);
     }
 
-    select.addEventListener('change', () => {
-        state.ratePlanId = select.value;
-    });
-
     // Auto-select first plan
     if (plans.length > 0) {
         select.value = plans[0].id;
         state.ratePlanId = plans[0].id;
+    } else {
+        state.ratePlanId = '';
     }
 }
 

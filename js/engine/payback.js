@@ -182,14 +182,14 @@ function buildYearlyProjection(result, arbitrage, vpp, backup, years) {
     let cumulative = -(result.netSystemCost);
 
     for (let y = 1; y <= years; y++) {
-        // Use arbitrage yearly breakdown if available, otherwise use flat
-        const arbYear = arbitrage.yearlyBreakdown?.[y - 1]?.savings || arbitrage.totalAnnual;
-        const yearTotal = arbYear + vpp.annualEarnings.mid + backup.annualValue;
-
-        // For lease model, subtract monthly fees
-        let yearNet = yearTotal;
+        let yearNet;
         if (result.type === "lease") {
-            yearNet -= (result.monthlyLeaseCost || 0) * 12;
+            // For lease model, cash flow is uniform annual savings before upfront install fee
+            yearNet = (result.netBenefit + result.systemCost) / years;
+        } else {
+            // Use arbitrage yearly breakdown if available, otherwise use flat
+            const arbYear = arbitrage.yearlyBreakdown?.[y - 1]?.savings || arbitrage.totalAnnual;
+            yearNet = arbYear + vpp.annualEarnings.mid + backup.annualValue;
         }
 
         cumulative += yearNet;

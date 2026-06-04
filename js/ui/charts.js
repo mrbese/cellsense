@@ -128,8 +128,8 @@ export function drawSavingsDonut(canvasId, result) {
     const h = 280;
     const cx = w / 2;
     const cy = h / 2 - 10;
-    const outerR = Math.min(w, h) / 2 - 40;
-    const innerR = outerR * 0.62;
+    const outerR = Math.max(10, Math.min(w, h) / 2 - 40);
+    const innerR = Math.max(5, outerR * 0.62);
 
     ctx.clearRect(0, 0, w, h);
 
