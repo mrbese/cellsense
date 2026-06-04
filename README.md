@@ -2,7 +2,7 @@
 
 **A personal home battery ROI calculator.**
 
-Calculate payback periods for popular home battery systems based on your utility, rate plan, and energy profile. Compare Tesla Powerwall 3, Enphase IQ 5P, Pila Mesh, and Base Power side-by-side.
+Calculate payback periods for popular home battery systems based on your utility, rate plan, and energy profile. Compare Tesla Powerwall 3, Enphase IQ 5P, Pila Mesh, and Base Power side-by-side. *Optimized for California NEM 3.0, New England ConnectedSolutions, and ERCOT VPP programs.*
 
 ![CellSense Screenshot](https://raw.githubusercontent.com/wiki/placeholder/cellsense-hero.png)
 
