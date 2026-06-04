@@ -31,5 +31,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>CellSense needs camera access to scan your electricity bills.</string>
 </dict>
 </plist>

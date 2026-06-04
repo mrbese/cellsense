@@ -287,14 +287,16 @@ struct UtilityStepView: View {
             showScanAlert = true
             return
         }
-        defer { url.stopAccessingSecurityScopedResource() }
         
         isScanning = true
         let isPDF = url.pathExtension.lowercased() == "pdf"
         
         if isPDF {
             DispatchQueue.global(qos: .userInitiated).async {
-                if let pdf = PDFDocument(url: url) {
+                let pdf = PDFDocument(url: url)
+                url.stopAccessingSecurityScopedResource()
+                
+                if let pdf = pdf {
                     var pagesText: [String] = []
                     for i in 0..<pdf.pageCount {
                         if let page = pdf.page(at: i), let pageText = page.string {
@@ -317,17 +319,24 @@ struct UtilityStepView: View {
                 }
             }
         } else {
-            if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
-                BillParser.shared.parseImage(image) { result in
+            DispatchQueue.global(qos: .userInitiated).async {
+                let data = try? Data(contentsOf: url)
+                url.stopAccessingSecurityScopedResource()
+                
+                if let data = data, let image = UIImage(data: data) {
+                    BillParser.shared.parseImage(image) { result in
+                        DispatchQueue.main.async {
+                            self.isScanning = false
+                            self.applyParseResult(result)
+                        }
+                    }
+                } else {
                     DispatchQueue.main.async {
                         self.isScanning = false
-                        self.applyParseResult(result)
+                        self.scanAlertMessage = "Failed to load the image file."
+                        self.showScanAlert = true
                     }
                 }
-            } else {
-                self.isScanning = false
-                self.scanAlertMessage = "Failed to load the image file."
-                self.showScanAlert = true
             }
         }
     }
