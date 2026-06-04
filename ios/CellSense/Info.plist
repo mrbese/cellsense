@@ -31,6 +31,10 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>CellSense needs camera access to scan your electricity bills.</string>
 	<key>UIRequiresFullScreen</key>
