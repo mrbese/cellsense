@@ -47,7 +47,7 @@
 		5531DE930217F70E21B20B5D /* ResultsDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsDashboardView.swift; sourceTree = "<group>"; };
 		5E3D801063C09EB7AFB5C257 /* BatteryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryCardView.swift; sourceTree = "<group>"; };
 		644CFFEFFFC66BF5645A9031 /* MathBreakdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathBreakdownView.swift; sourceTree = "<group>"; };
-		684A5A333DDC099ACC5CC858 /* CellSense.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CellSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		684A5A333DDC099ACC5CC858 /* CellSense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CellSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FCFC00082D73BE44E6A968 /* ratePlans.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ratePlans.json; sourceTree = "<group>"; };
 		808EB32A0B4F9925DE14B75F /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		90595B17C92A8BAAEECDD7AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -188,11 +188,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
-				TargetAttributes = {
-					701222DE73A5C8571C6B6F6E = {
-						DevelopmentTeam = "";
-					};
-				};
 			};
 			buildConfigurationList = 82E4BA96C39D6AEB07C1D66A /* Build configuration list for PBXProject "CellSense" */;
 			developmentRegion = en;
@@ -325,7 +320,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 3V7T9UPYM9;
 				INFOPLIST_FILE = CellSense/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -343,7 +338,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 3V7T9UPYM9;
 				INFOPLIST_FILE = CellSense/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (

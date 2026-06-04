@@ -1,12 +1,14 @@
 import SwiftUI
 import PhotosUI
 import VisionKit
+import PDFKit
 
 struct UtilityStepView: View {
     @Bindable var model: CalculationModel
     
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var showCameraScanner = false
+    @State private var showFileImporter = false
     @State private var isScanning = false
     @State private var showScanAlert = false
     @State private var scanAlertMessage = ""
@@ -30,13 +32,34 @@ struct UtilityStepView: View {
                     .font(.caption.bold())
                     .foregroundColor(Color(red: 0.0, green: 0.83, blue: 0.67))
                 
+                // Primary Camera Scan Button
+                Button(action: {
+                    if VNDocumentCameraViewController.isSupported {
+                        showCameraScanner = true
+                    } else {
+                        scanAlertMessage = "Camera document scanning is not supported on this device/simulator. Please use the Files or Photos options."
+                        showScanAlert = true
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: "doc.text.viewfinder")
+                        Text("Scan Bill with Camera")
+                            .font(.footnote.bold())
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 12)
+                    .background(Color(red: 0.0, green: 0.83, blue: 0.67))
+                    .foregroundColor(.black)
+                    .cornerRadius(8)
+                }
+                
                 HStack(spacing: 12) {
-                    // Upload Photo button
+                    // Photos Library button
                     PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
                         HStack {
                             Image(systemName: "photo.on.rectangle.angled")
-                            Text("Upload Bill")
-                                .font(.footnote.bold())
+                            Text("Photos Library")
+                                .font(.caption.bold())
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
@@ -49,19 +72,14 @@ struct UtilityStepView: View {
                         )
                     }
                     
-                    // Scan Camera button
+                    // Files App button
                     Button(action: {
-                        if VNDocumentCameraViewController.isSupported {
-                            showCameraScanner = true
-                        } else {
-                            scanAlertMessage = "Camera document scanning is not supported on this device/simulator. Please use the Upload Bill option."
-                            showScanAlert = true
-                        }
+                        showFileImporter = true
                     }) {
                         HStack {
-                            Image(systemName: "doc.text.viewfinder")
-                            Text("Scan Bill")
-                                .font(.footnote.bold())
+                            Image(systemName: "folder.badge.plus")
+                            Text("Files App")
+                                .font(.caption.bold())
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
@@ -230,6 +248,20 @@ struct UtilityStepView: View {
                 onCancel: {}
             )
         }
+        .fileImporter(
+            isPresented: $showFileImporter,
+            allowedContentTypes: [.pdf, .image],
+            allowsMultipleSelection: false
+        ) { result in
+            switch result {
+            case .success(let urls):
+                guard let url = urls.first else { return }
+                handleImportedFile(at: url)
+            case .failure(let error):
+                scanAlertMessage = "File import error: \(error.localizedDescription)"
+                showScanAlert = true
+            }
+        }
         .alert("Bill Scanner", isPresented: $showScanAlert) {
             Button("OK", role: .cancel) {
                 selectedItem = nil
@@ -244,33 +276,87 @@ struct UtilityStepView: View {
         BillParser.shared.parseImage(image) { result in
             DispatchQueue.main.async {
                 isScanning = false
-                
-                var changes: [String] = []
-                
-                if let amt = result.amount {
-                    model.monthlyBill = amt
-                    changes.append("• Monthly bill: $\(Int(amt))")
-                }
-                
-                if let utilId = result.utilityId,
-                   let util = DataManager.shared.utilities.first(where: { $0.id == utilId }) {
-                    model.selectedUtility = util
-                    changes.append("• Utility: \(util.shortName)")
-                    
-                    if let planId = result.ratePlanId,
-                       let plan = DataManager.shared.getRatePlans(forUtilityId: utilId).first(where: { $0.id == planId }) {
-                        model.selectedRatePlan = plan
-                        changes.append("• Rate plan: \(plan.name)")
-                    }
-                }
-                
-                if changes.isEmpty {
-                    scanAlertMessage = "We couldn't recognize the utility, rate plan, or bill amount from the image. Please verify the photo is clear and try again."
-                } else {
-                    scanAlertMessage = "Successfully recognized and auto-filled:\n\n" + changes.joined(separator: "\n")
-                }
-                showScanAlert = true
+                applyParseResult(result)
             }
         }
+    }
+    
+    private func handleImportedFile(at url: URL) {
+        guard url.startAccessingSecurityScopedResource() else {
+            scanAlertMessage = "Unable to access the selected file due to security permissions."
+            showScanAlert = true
+            return
+        }
+        defer { url.stopAccessingSecurityScopedResource() }
+        
+        isScanning = true
+        let isPDF = url.pathExtension.lowercased() == "pdf"
+        
+        if isPDF {
+            DispatchQueue.global(qos: .userInitiated).async {
+                if let pdf = PDFDocument(url: url) {
+                    var pagesText: [String] = []
+                    for i in 0..<pdf.pageCount {
+                        if let page = pdf.page(at: i), let pageText = page.string {
+                            pagesText.append(pageText)
+                        }
+                    }
+                    
+                    let result = BillParser.shared.analyzeText(pagesText)
+                    
+                    DispatchQueue.main.async {
+                        self.isScanning = false
+                        self.applyParseResult(result)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.isScanning = false
+                        self.scanAlertMessage = "Failed to load the PDF document."
+                        self.showScanAlert = true
+                    }
+                }
+            }
+        } else {
+            if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+                BillParser.shared.parseImage(image) { result in
+                    DispatchQueue.main.async {
+                        self.isScanning = false
+                        self.applyParseResult(result)
+                    }
+                }
+            } else {
+                self.isScanning = false
+                self.scanAlertMessage = "Failed to load the image file."
+                self.showScanAlert = true
+            }
+        }
+    }
+    
+    private func applyParseResult(_ result: BillParser.ParseResult) {
+        var changes: [String] = []
+        
+        if let amt = result.amount {
+            model.monthlyBill = amt
+            changes.append("• Monthly bill: $\(Int(amt))")
+        }
+        
+        if let utilId = result.utilityId,
+           let util = DataManager.shared.utilities.first(where: { $0.id == utilId }) {
+            model.selectedUtility = util
+            changes.append("• Utility: \(util.shortName)")
+            
+            if let planId = result.ratePlanId,
+               let plan = DataManager.shared.getRatePlans(forUtilityId: utilId).first(where: { $0.id == planId }) {
+                model.selectedRatePlan = plan
+                changes.append("• Rate plan: \(plan.name)")
+            }
+        }
+        
+        if changes.isEmpty {
+            scanAlertMessage = "We couldn't recognize the utility, rate plan, or bill amount from the document. Please verify the document is readable and try again."
+        } else {
+            scanAlertMessage = "Successfully recognized and auto-filled:\n\n" + changes.joined(separator: "\n")
+        }
+        showScanAlert = true
     }
 }

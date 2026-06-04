@@ -57,7 +57,7 @@ public final class BillParser {
         }
     }
     
-    private func analyzeText(_ strings: [String]) -> ParseResult {
+    public func analyzeText(_ strings: [String]) -> ParseResult {
         let fullText = strings.joined(separator: "\n")
         print("--- EXTRACTED OCR TEXT ---")
         print(fullText)
