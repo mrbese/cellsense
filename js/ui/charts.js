@@ -312,12 +312,14 @@ export function drawCumulativeChart(canvasId, results) {
 
         // End dot
         const lastP = points[points.length - 1];
-        const lastX = padding.left + chartW;
-        const lastY = padding.top + chartH - (chartH * (lastP.cumulative - minVal) / range);
-        ctx.beginPath();
-        ctx.arc(lastX, lastY, 4, 0, Math.PI * 2);
-        ctx.fillStyle = color;
-        ctx.fill();
+        if (lastP) {
+            const lastX = padding.left + chartW;
+            const lastY = padding.top + chartH - (chartH * (lastP.cumulative - minVal) / range);
+            ctx.beginPath();
+            ctx.arc(lastX, lastY, 4, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
     });
 }
 

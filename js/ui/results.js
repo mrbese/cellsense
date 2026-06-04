@@ -124,7 +124,7 @@ function createBatteryCard(result, index) {
       <span class="battery-card__net-value ${netBenefitClass}">${netBenefitSign}${formatCurrency(result.netBenefit)}</span>
     </div>
 
-    <button class="battery-card__details-toggle" onclick="this.nextElementSibling.classList.toggle('math-breakdown--visible'); this.textContent = this.textContent.includes('Show') ? '▲ Hide Math' : '▼ Show Math'">
+    <button class="battery-card__details-toggle">
       ▼ Show Math
     </button>
 
@@ -132,6 +132,16 @@ function createBatteryCard(result, index) {
       ${renderMathBreakdown(result)}
     </div>
   `;
+
+  // Attach event listener programmatically to avoid inline onclick (CSP)
+  const toggleBtn = card.querySelector('.battery-card__details-toggle');
+  const breakdownDiv = card.querySelector('.math-breakdown');
+  if (toggleBtn && breakdownDiv) {
+    toggleBtn.addEventListener('click', () => {
+      breakdownDiv.classList.toggle('math-breakdown--visible');
+      toggleBtn.textContent = toggleBtn.textContent.includes('Show') ? '▲ Hide Math' : '▼ Show Math';
+    });
+  }
 
   return card;
 }

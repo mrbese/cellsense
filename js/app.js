@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             const resultsEl = document.getElementById('results-section');
-            if (resultsEl?.classList.contains('results--visible') && window._lastResults) {
+            if (resultsEl?.classList.contains('results--visible') && window._lastResults && window._lastResults.length > 0) {
                 // Import charts and redraw
                 import('./ui/charts.js').then(({ drawPaybackChart, drawCumulativeChart, drawSavingsDonut }) => {
                     drawPaybackChart('payback-chart', window._lastResults);

@@ -122,7 +122,7 @@ function calculatePurchasePayback(battery, annualSavings, vpp, options) {
         paybackMonths: Math.round(paybackYears * 12),
         totalSavings: Math.round(totalSavings10yr),
         netBenefit: Math.round(netBenefit),
-        roi: systemCost > 0 ? Math.round((netBenefit / systemCost) * 100) : 0,
+        roi: systemCost > 0 ? Math.round((netBenefit / systemCost) * 100) : (netBenefit > 0 ? Infinity : 0),
     };
 }
 
@@ -140,7 +140,8 @@ function calculateLeasePayback(battery, utility, monthlyBill, options) {
     // Base Power cost over analysis period
     const installFee = battery.installationFee;
     const monthlyMembership = battery.monthlyFee * months;
-    const energyCost = battery.allInRate * (monthlyBill / utility.avgBlendedRate) * months;
+    const blendedRate = utility.avgBlendedRate || 0.15;
+    const energyCost = battery.allInRate * (monthlyBill / (blendedRate > 0 ? blendedRate : 0.15)) * months;
     // Base Power claims to replace most of your utility bill with their fixed rate
     const basePowerTotalCost = installFee + monthlyMembership + energyCost;
 
@@ -168,7 +169,7 @@ function calculateLeasePayback(battery, utility, monthlyBill, options) {
         paybackMonths: Math.round(paybackMonths),
         totalSavings: Math.round(totalSavings),
         netBenefit: Math.round(totalSavings),
-        roi: installFee > 0 ? Math.round((totalSavings / installFee) * 100) : 0,
+        roi: installFee > 0 ? Math.round((totalSavings / installFee) * 100) : (totalSavings > 0 ? Infinity : 0),
         monthlySavingsVsUtility: Math.round(monthlySavings),
         annualSavings: Math.round(totalSavings / analysisYears),
     };
@@ -236,6 +237,9 @@ export function calculateAll(batteries, ratePlan, utility, options = {}) {
     // Sort by payback years (shortest first), with lease models at end
     results.sort((a, b) => {
         if (a.type !== b.type) return a.type === "purchase" ? -1 : 1;
+        if (a.paybackYears === b.paybackYears) return 0;
+        if (!isFinite(a.paybackYears) && isFinite(b.paybackYears)) return 1;
+        if (isFinite(a.paybackYears) && !isFinite(b.paybackYears)) return -1;
         return a.paybackYears - b.paybackYears;
     });
 
