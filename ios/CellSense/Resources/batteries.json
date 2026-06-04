@@ -133,6 +133,8 @@
     "allInRate": 0.145,
     "contractMonths": 36,
     "federalTaxCreditEligible": false,
+    "federalTaxCreditRate": 0.0,
+    "installationIncluded": false,
     "stackableUnits": 2,
     "expandable": true,
     "expansionUnitCapacityKwh": 25,
