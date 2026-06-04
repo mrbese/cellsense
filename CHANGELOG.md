@@ -8,12 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.0.1] - 2026-06-04
 
 ### Added
-- Updated the README with specific optimizations for California NEM 3.0, New England ConnectedSolutions, and Texas ERCOT VPP programs.
+- Updated the README to highlight support for California NEM 3.0, New England ConnectedSolutions, and Texas ERCOT VPP programs.
 
 ### Fixed
-- Fixed unstable comparison card sorting in the results engine when payback years evaluate to Infinity.
-- Fixed potential division-by-zero risk in lease payback calculations if a utility's blended rate is zero.
-- Guarded the window resize event handler from throwing a TypeError when calculation results are empty.
-- Guarded the cumulative savings chart dot renderer from throwing a TypeError when data points are empty.
-- Corrected VPP calculation logic to prevent double-scaling of capacity-based and event-based earnings.
-- Replaced inline details toggle click handlers in the comparison view with programmatic event listeners to ensure CSP compliance.
+- Fixed battery comparison card sorting to handle systems with infinite payback periods gracefully.
+- Prevented division-by-zero crashes in lease payback calculations when a utility rate plan has a zero average blended rate.
+- Fixed a TypeError console crash when resizing the window before any calculation results have generated.
+- Fixed a TypeError console crash in the cumulative savings chart dot renderer when data points are empty.
+- Corrected Virtual Power Plant (VPP) calculation logic to prevent double-scaling capacity and event earnings.
+- Replaced inline details toggle click handlers with programmatic event listeners to ensure full Content Security Policy (CSP) compliance.

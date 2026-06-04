@@ -9,7 +9,7 @@ Calculate payback periods for popular home battery systems based on your utility
 ## Features
 
 - **16 Utilities** — PG&E, SCE, SDG&E, Con Edison, Eversource, and more
-- **32 Rate Plans** — TOU schedules with peak/off-peak/super-off-peak tiers
+- **35 Rate Plans** — TOU schedules with peak/off-peak/super-off-peak tiers
 - **4 Battery Systems** — Purchase vs. lease models with real specs & pricing
 - **NEM 3.0 Support** — California net billing export rate calculations
 - **VPP Earnings** — ELRP, ConnectedSolutions, ERCOT, and more
@@ -44,6 +44,10 @@ Open [http://localhost:8765](http://localhost:8765)
 ## Rate Data
 
 Rate data is accurate as of Q1 2026 and sourced from published utility tariffs. To update rates, edit the files in `js/data/`.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for details on recent releases and updates.
 
 ## License
 
