@@ -13,15 +13,20 @@ struct CalculatorWizardView: View {
             
             VStack(spacing: 20) {
                 // Header brand title
-                VStack(spacing: 4) {
+                VStack(spacing: 8) {
+                    Image("Logo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 80, height: 80)
+                        .cornerRadius(16)
+                        .shadow(color: Color(red: 0.0, green: 0.83, blue: 0.67).opacity(0.3), radius: 6)
+                    
                     HStack(spacing: 4) {
-                        Text("⚡")
-                            .font(.subheadline)
                         Text("Cell")
-                            .font(.largeTitle.bold())
+                            .font(.title2.bold())
                             .foregroundColor(.white)
                         Text("Sense")
-                            .font(.largeTitle.bold())
+                            .font(.title2.bold())
                             .foregroundColor(Color(red: 0.0, green: 0.83, blue: 0.67)) // Teal accent
                     }
                     Text("Home Battery ROI Calculator")
