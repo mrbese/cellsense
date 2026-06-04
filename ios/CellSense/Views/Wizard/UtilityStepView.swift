@@ -1,7 +1,15 @@
 import SwiftUI
+import PhotosUI
+import VisionKit
 
 struct UtilityStepView: View {
     @Bindable var model: CalculationModel
+    
+    @State private var selectedItem: PhotosPickerItem? = nil
+    @State private var showCameraScanner = false
+    @State private var isScanning = false
+    @State private var showScanAlert = false
+    @State private var scanAlertMessage = ""
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -15,6 +23,76 @@ struct UtilityStepView: View {
                     .foregroundColor(.gray)
             }
             .padding(.bottom, 10)
+            
+            // Scan / Upload Bill Section
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Autofill with Bill Scan (Optional)")
+                    .font(.caption.bold())
+                    .foregroundColor(Color(red: 0.0, green: 0.83, blue: 0.67))
+                
+                HStack(spacing: 12) {
+                    // Upload Photo button
+                    PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
+                        HStack {
+                            Image(systemName: "photo.on.rectangle.angled")
+                            Text("Upload Bill")
+                                .font(.footnote.bold())
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(Color.white.opacity(0.1))
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                        )
+                    }
+                    
+                    // Scan Camera button
+                    Button(action: {
+                        if VNDocumentCameraViewController.isSupported {
+                            showCameraScanner = true
+                        } else {
+                            scanAlertMessage = "Camera document scanning is not supported on this device/simulator. Please use the Upload Bill option."
+                            showScanAlert = true
+                        }
+                    }) {
+                        HStack {
+                            Image(systemName: "doc.text.viewfinder")
+                            Text("Scan Bill")
+                                .font(.footnote.bold())
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(Color.white.opacity(0.1))
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                        )
+                    }
+                }
+                
+                if isScanning {
+                    HStack(spacing: 8) {
+                        ProgressView()
+                            .tint(Color(red: 0.0, green: 0.83, blue: 0.67))
+                        Text("Extracting information from bill...")
+                            .font(.caption2)
+                            .foregroundColor(.gray)
+                    }
+                    .padding(.top, 4)
+                }
+            }
+            .padding(12)
+            .background(Color.white.opacity(0.03))
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.white.opacity(0.05), lineWidth: 1)
+            )
             
             // Utility Selection Picker
             VStack(alignment: .leading, spacing: 8) {
@@ -129,6 +207,69 @@ struct UtilityStepView: View {
                         .stroke(Color(red: 1.0, green: 0.84, blue: 0.0).opacity(0.2), lineWidth: 1)
                 )
                 .transition(.opacity.combined(with: .scale))
+            }
+        }
+        .onChange(of: selectedItem) { oldItem, newItem in
+            Task {
+                if let data = try? await newItem?.loadTransferable(type: Data.self),
+                   let image = UIImage(data: data) {
+                    handleScannedImage(image)
+                }
+            }
+        }
+        .sheet(isPresented: $showCameraScanner) {
+            DocumentScannerView(
+                isPresented: $showCameraScanner,
+                onRecognize: { image in
+                    handleScannedImage(image)
+                },
+                onError: { error in
+                    scanAlertMessage = "Scanner error: \(error.localizedDescription)"
+                    showScanAlert = true
+                },
+                onCancel: {}
+            )
+        }
+        .alert("Bill Scanner", isPresented: $showScanAlert) {
+            Button("OK", role: .cancel) {
+                selectedItem = nil
+            }
+        } message: {
+            Text(scanAlertMessage)
+        }
+    }
+    
+    private func handleScannedImage(_ image: UIImage) {
+        isScanning = true
+        BillParser.shared.parseImage(image) { result in
+            DispatchQueue.main.async {
+                isScanning = false
+                
+                var changes: [String] = []
+                
+                if let amt = result.amount {
+                    model.monthlyBill = amt
+                    changes.append("• Monthly bill: $\(Int(amt))")
+                }
+                
+                if let utilId = result.utilityId,
+                   let util = DataManager.shared.utilities.first(where: { $0.id == utilId }) {
+                    model.selectedUtility = util
+                    changes.append("• Utility: \(util.shortName)")
+                    
+                    if let planId = result.ratePlanId,
+                       let plan = DataManager.shared.getRatePlans(forUtilityId: utilId).first(where: { $0.id == planId }) {
+                        model.selectedRatePlan = plan
+                        changes.append("• Rate plan: \(plan.name)")
+                    }
+                }
+                
+                if changes.isEmpty {
+                    scanAlertMessage = "We couldn't recognize the utility, rate plan, or bill amount from the image. Please verify the photo is clear and try again."
+                } else {
+                    scanAlertMessage = "Successfully recognized and auto-filled:\n\n" + changes.joined(separator: "\n")
+                }
+                showScanAlert = true
             }
         }
     }
