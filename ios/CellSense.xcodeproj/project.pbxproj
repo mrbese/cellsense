@@ -190,7 +190,7 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					701222DE73A5C8571C6B6F6E = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = 3V7T9UPYM9;
 					};
 				};
 			};
@@ -325,7 +325,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 3V7T9UPYM9;
 				INFOPLIST_FILE = CellSense/Info.plist;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -346,7 +346,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 3V7T9UPYM9;
 				INFOPLIST_FILE = CellSense/Info.plist;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
