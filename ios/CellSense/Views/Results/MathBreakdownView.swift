@@ -123,7 +123,7 @@ struct MathBreakdownView: View {
                                         .foregroundColor(.gray)
                                     
                                     HStack {
-                                        Text("$\(result.systemCost) ÷ $\(result.monthlyLeaseCost ?? 0 + (result.monthlySavingsVsUtility ?? 0))")
+                                        Text("$\(result.systemCost) ÷ $\((result.monthlyLeaseCost ?? 0) + (result.monthlySavingsVsUtility ?? 0))")
                                             .font(.body.bold())
                                             .foregroundColor(.white)
                                         Spacer()

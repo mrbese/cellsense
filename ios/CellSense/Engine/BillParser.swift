@@ -59,10 +59,12 @@ public final class BillParser {
     
     public func analyzeText(_ strings: [String]) -> ParseResult {
         let fullText = strings.joined(separator: "\n")
+        #if DEBUG
         print("--- EXTRACTED OCR TEXT ---")
         print(fullText)
         print("---------------------------")
-        
+        #endif
+
         // 1. Identify Utility
         var matchedUtilityId: String? = nil
         let utilities = DataManager.shared.utilities

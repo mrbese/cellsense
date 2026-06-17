@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIApplicationSceneManifest</key>
@@ -36,8 +36,12 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>CellSense needs camera access to scan your electricity bills.</string>
+	<string>CellSense uses the camera to scan printed electricity bills. All scanning and OCR is performed locally on your device. No images are stored or transmitted.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>CellSense accesses photos you select to import electricity bill images for on-device scanning. No images are stored or transmitted.</string>
 	<key>UIRequiresFullScreen</key>
 	<true/>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>
