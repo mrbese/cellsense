@@ -49,4 +49,4 @@ See [CHANGELOG.md](CHANGELOG.md) for details on recent releases and updates.
 
 ## License
 
-This project is licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE.md). It is free for noncommercial use; commercial use requires the author's permission.
+This project is open source under the [MIT License](LICENSE.md).
