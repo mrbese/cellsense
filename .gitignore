@@ -3,3 +3,7 @@ Thumbs.db
 *.log
 node_modules/
 .env
+
+# Xcode user state and build output
+xcuserdata/
+ios/build/

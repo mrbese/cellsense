@@ -1,0 +1,13 @@
+{
+  "data": {
+    "type": "appStoreVersionLocalizations",
+    "id": "07050113-bb74-4190-a9ab-299fc11dd818",
+    "attributes": {
+      "description": "CellSense is a modern, serverless home battery ROI calculator designed to help you analyze solar battery savings under NEM 3.0, Time-of-Use (TOU) arbitrage, and Virtual Power Plant (VPP) configurations.\n\nMaximize your energy independence. Import or scan your PGE, SCE, or SDGE electricity bills using Apple's built-in VisionKit OCR to instantly prefill your utility rate plan and monthly usage.\n\nKEY FEATURES:\n• Bill Parsing: Instantly extract utility, rate plan, and energy costs from PDF bills or photo screenshots.\n• NEM 3.0 Analysis: Evaluate solar export value under California's Net Billing Tariff.\n• Arbitrage Calculator: Simulates energy shifting (charging during off-peak hours, discharging during peak hours).\n• VPP Calculations: Model additional income from Virtual Power Plant programs.\n• Clean Interactive Charts: Compare paybacks for industry-leading batteries (Base Power, Tesla Powerwall 3, and Enphase 5P).\n\nPRIVACY-FIRST:\nCellSense performs 100% of OCR scanning and calculation locally on-device. No images, PDF documents, or personal energy data are ever transmitted to external servers. No login or accounts required.",
+      "keywords": "solar battery,roi calculator,nem 3.0,bill scanner,powerwall,enphase,energy arbitrage,savings,vpp",
+      "promotionalText": "Scan your electricity bill to instantly calculate home solar & battery ROI. Discover your NEM 3.0 savings today!",
+      "supportUrl": "https://github.com/mrbese/cellsense",
+      "marketingUrl": "https://github.com/mrbese/cellsense"
+    }
+  }
+}

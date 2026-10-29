@@ -1,0 +1,17 @@
+{
+  "data": {
+    "type": "appStoreReviewDetails",
+    "attributes": {
+      "demoAccountRequired": false,
+      "notes": "Dear App Review Team,\n\nCellSense is a home energy solar/battery ROI utility app. \nTo facilitate testing, please note:\n1. The app does not require a login or account registration. All features are fully accessible upon launch.\n2. The \"Scan Bill\" feature can be tested on the simulator or physical device. For OCR testing, you can use the \"Files App\" or \"Photos Library\" options to upload an image of a standard utility bill.\n3. 100% of OCR scanning and financial logic is executed locally on-device using Apple's Vision framework (VNRecognizeTextRequest). No external API or server-side calls are made, guaranteeing total user privacy.\n4. The app is locked to Portrait orientation for consistent form layout design. The UIRequiresFullScreen plist flag has been enabled to conform to iPadOS orientation standards.\n\nThank you,\nCellSense Developer Team"
+    },
+    "relationships": {
+      "appStoreVersion": {
+        "data": {
+          "type": "appStoreVersions",
+          "id": "7b28e6be-f2ae-4545-90d0-10dde6054e73"
+        }
+      }
+    }
+  }
+}
